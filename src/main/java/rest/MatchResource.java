@@ -143,4 +143,14 @@ public class MatchResource {
         return Response.ok().entity(GSON.toJson(updated)).build();
     }
 
+
+    @DELETE
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response delete(@PathParam("id") int id) throws EntityNotFoundException {
+        Match deleted = FACADE.delete(id);
+        return Response.ok().entity(GSON.toJson(deleted)).build();
+    }
+
+
 }
