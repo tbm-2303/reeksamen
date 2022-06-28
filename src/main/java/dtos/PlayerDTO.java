@@ -26,6 +26,9 @@ public class PlayerDTO {
         this.phone = player.getPhone();
         this.email = player.getEmail();
         this.status = player.getStatus();
+        if (player.getMatches() != null) {
+            this.matchList = player.getMatches();
+        }
     }
 
 

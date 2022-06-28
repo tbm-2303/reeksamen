@@ -11,9 +11,6 @@ public class UserDTO {
     private String firstName;
     private String userPass;
 
-
-
-
     public UserDTO(User user) {
         if (user.getId() != 0)
             this.id = user.getId();

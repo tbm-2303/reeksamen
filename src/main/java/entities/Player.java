@@ -54,22 +54,8 @@ public class Player implements Serializable {
         setUser(user);
         user.setPlayer(this);
     }
-    public void test(Match m) {
-        this.matches.add(m);
-        if(!m.getPlayers().contains(this)){
-            m.addPlayer(this);
-        }
-    }
-    //add relation
-    public void addMatch(Match match) {
+    public void addMatch(Match match){
         this.matches.add(match);
-        match.addPlayer(this);
-
-    }
-//remove
-    public void removeMatch(Match match){
-        this.matches.remove(match);
-        match.getPlayers().remove(this);
     }
 
     public int getId() { return id; }
