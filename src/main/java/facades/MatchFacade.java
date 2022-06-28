@@ -57,9 +57,7 @@ public class MatchFacade {
             TypedQuery<User> query = em.createQuery("SELECT u FROM User u where u.userName = '" + username + "'", User.class);
             User user = query.getSingleResult();
             player.addUser(user);
-
             em.getTransaction().begin();
-            //em.merge(user);//not sure
             em.persist(player);
             em.getTransaction().commit();
             return new PlayerDTO(player);
@@ -150,7 +148,6 @@ public class MatchFacade {
         em.getTransaction().commit();
         return match;
     }
-
 
 
 
