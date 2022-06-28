@@ -30,7 +30,7 @@ public class Match  implements Serializable {
     private String inDoor;
 
 
-    @ManyToMany(mappedBy="players")
+    @ManyToMany(mappedBy="matches")
     private List<Player> players = new ArrayList<>();
 
     @ManyToOne
