@@ -24,8 +24,9 @@ public class Location implements Serializable {
     @Column(name = "con", nullable = false)
     private String con;
 
-    @OneToMany(mappedBy = "matches", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "location", cascade = CascadeType.PERSIST)
     private List<Match> matches = new ArrayList<>();
+
 
 
     public Location(String address, String city, String con) {

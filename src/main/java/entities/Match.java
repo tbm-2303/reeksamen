@@ -37,6 +37,7 @@ public class Match  implements Serializable {
     private Location location;
 
 
+
     public Match(String opponent, String judge, String type, String inDoor) {
         this.opponent = opponent;
         this.judge = judge;
