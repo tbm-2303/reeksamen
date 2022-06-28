@@ -44,6 +44,23 @@ public class MatchFacade {
     }
 
 
+
+
+
+    //us 2
+    public List<MatchDTO> getMyMatches(String username){
+        EntityManager em = getEntityManager();
+        TypedQuery<User> query = em.createQuery("SELECT u FROM User u where u.userName = '" + username +"'", User.class);
+        User user = query.getSingleResult();
+        int id = user.getId();
+        TypedQuery<Player> query1 = em.createQuery("SELECT p FROM Player p where p.user.id = '" + id +"'", Player.class);
+        Player player = query1.getSingleResult();
+        List<Match> matches = player.getMatches();
+        em.close();
+        return MatchDTO.getDTOS(matches);
+    }
+
+
     public MatchDTO create(MatchDTO matchDTO, int locationid) {
         EntityManager em = getEntityManager();
         Location location = em.find(Location.class, locationid);
