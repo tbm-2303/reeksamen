@@ -47,10 +47,14 @@ public class MatchResource {
     @Path("getMyMatches/{username}")
     //@RolesAllowed("user")
     public Response getMyMatches(@PathParam("username") String username) {
-        List<MatchDTO> matches = FACADE.getMyMatches(username);
+        List<Match> matches = FACADE.getMyMatches(username);
+        List<MatchDTO> matchDTOS = new ArrayList<>();
+        for (Match m : matches) {
+            matchDTOS.add(new MatchDTO(m));
+        }
         return Response
                 .ok()
-                .entity(GSON.toJson(matches))
+                .entity(GSON.toJson(matchDTOS))
                 .build();
     }
 
