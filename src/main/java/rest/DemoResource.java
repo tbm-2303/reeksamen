@@ -93,7 +93,7 @@ public class DemoResource {
         location.addMatch(match);
         location2.addMatch(match2);
         player.addUser(user);
-        player.addMatch(match);
+        player.test(match);
 
         //persisting
         em.persist(userRole);

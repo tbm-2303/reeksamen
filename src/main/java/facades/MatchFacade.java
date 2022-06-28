@@ -109,8 +109,7 @@ public class MatchFacade {
         int id = user.getId();
         TypedQuery<Player> query1 = em.createQuery("SELECT p FROM Player p where p.user.id = '" + id + "'", Player.class);
         Player player = query1.getSingleResult();
-        List<Match> matches = player.getMatches();
-        return matches;
+        return player.getMatches();
     }
 
 
