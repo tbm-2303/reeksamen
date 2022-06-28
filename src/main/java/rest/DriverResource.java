@@ -2,11 +2,9 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dtos.DriverDTO;
 import entities.Driver;
 import entities.Race;
 import facades.DriverFacade;
-import facades.RaceFacade;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;

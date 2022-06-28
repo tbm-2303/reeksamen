@@ -1,17 +1,14 @@
 package facades;
 
-import dtos.RaceDTO;
 import entities.Car;
 import entities.Driver;
 import entities.Race;
 import entities.User;
 import errorhandling.EntityNotFoundException;
-import javassist.NotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-import java.sql.Timestamp;
 import java.util.List;
 
 public class RaceFacade {

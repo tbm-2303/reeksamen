@@ -3,8 +3,6 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dtos.DriverDTO;
-import dtos.RaceDTO;
 import entities.Driver;
 import entities.Race;
 import facades.RaceFacade;
@@ -12,7 +10,6 @@ import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
