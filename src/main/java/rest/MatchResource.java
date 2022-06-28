@@ -15,11 +15,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.SecurityContext;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Path("match")
@@ -42,25 +40,31 @@ public class MatchResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("allMatches")
+    @Path("getall")
     //@RolesAllowed("user")
-    public String getAllMatches() {
+    public Response getAllMatches() {
         List<Match> matches = FACADE.getAll();
         List<MatchDTO> matchDTOS = new ArrayList<>();
-        for (Match m : matches) {
-            matchDTOS.add(new MatchDTO(m));
+        for (Match match : matches) {
+            matchDTOS.add(new MatchDTO(match));
         }
-        return GSON.toJson(matchDTOS);
+        return Response
+                .ok()
+                .entity(GSON.toJson(matchDTOS))
+                .build();
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/create/{locationid}")
-    public String createMatch(String match, @PathParam("locationid") Integer locationid) throws NotFoundException {
+    public Response createMatch(String match, @PathParam("locationid") Integer locationid) throws NotFoundException {
         MatchDTO matchDTO= GSON.fromJson(match, MatchDTO.class);
         MatchDTO created = FACADE.create(matchDTO, locationid);
-        return GSON.toJson(created);
+        return Response
+                .ok()
+                .entity(GSON.toJson(created))
+                .build();
     }
 
 }
