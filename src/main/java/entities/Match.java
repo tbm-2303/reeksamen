@@ -66,5 +66,9 @@ public class Match  implements Serializable {
     public List<Player> getPlayers() { return players; }
     public void setPlayers(List<Player> players) { this.players = players; }
 
+    public int getId() {
+        return id;
+    }
+
 
 }
