@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import dtos.UserDTO;
+import entities.Location;
+import entities.Match;
 import entities.Role;
 import entities.User;
 
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 import javax.annotation.security.RolesAllowed;
@@ -95,6 +98,17 @@ public class DemoResource {
         admin.addRole(adminRole);
         both.addRole(userRole);
         both.addRole(adminRole);
+        Location location = new Location("Per Henrik Lings Allé 2","2100 København","good", "Parken");
+        Location location2 = new Location("aliancetrase 2","Berlin", "good","Aliance stadion");
+
+        Match match = new Match("oppnent","judge","type","indoor");
+        Match match2 = new Match("oppnent2","judge2","type2","indoor2");
+        location.addMatch(match);
+        location2.addMatch(match2);
+        em.persist(location);
+        em.persist(location2);
+        em.persist(match);
+        em.persist(match2);
         em.persist(userRole);
         em.persist(adminRole);
         em.persist(user);
