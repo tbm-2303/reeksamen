@@ -107,7 +107,7 @@ public class DemoResource {
         em.persist(player);
 
         em.getTransaction().commit();
-
+        em.close();
         System.out.println("PW: " + user.getUserPass());
         System.out.println("Testing user with OK password: " + user.verifyPassword("timmy123"));
         System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
