@@ -10,10 +10,11 @@ import java.util.List;
 @NamedQuery(name = "Location.deleteAllRows", query = "DELETE from Location ")
 public class Location implements Serializable {
 
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", length = 25)
     private int id;
 
     @Column(name = "address")
@@ -25,8 +26,8 @@ public class Location implements Serializable {
     @Column(name = "condition")
     private String condition;
 
-
-
+    @OneToMany(mappedBy = "location", cascade = CascadeType.PERSIST)
+    private List<Match> matches = new ArrayList<>();
 
 
     public Location(String address, String city, String condition) {
@@ -38,12 +39,35 @@ public class Location implements Serializable {
     public Location() {
     }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
-    public String getCondition() { return condition; }
-    public void setCondition(String condition) { this.condition = condition; }
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
+    }
 }

@@ -28,11 +28,13 @@ public class Match  implements Serializable {
 
     @Column(name = "inDoor")
     private String inDoor;
-    
+
     @ManyToMany(mappedBy="matches")
     private List<Player> players = new ArrayList<>();
 
-
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
 
 
@@ -54,6 +56,14 @@ public class Match  implements Serializable {
     public void setType(String type) { this.type = type; }
     public String getInDoor() { return inDoor; }
     public void setInDoor(String inDoor) { this.inDoor = inDoor; }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public List<Player> getPlayers() {
         return players;
