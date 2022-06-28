@@ -74,6 +74,8 @@ public class DemoResource {
     public String setup(){
         EntityManager em = EMF.createEntityManager();
         em.getTransaction().begin();
+        User test1 = new User("test", "test1");
+        User test2 = new User("test2", "test2");
         User user = new User("timmy", "timmy123");
         User admin = new User("james", "james123");
         User both = new User("kent", "kent123");
@@ -86,6 +88,8 @@ public class DemoResource {
         Player player = new Player("name","phone","email","status");
 
         //relation
+        test1.addRole(userRole);//t
+        test2.addRole(userRole);//t
         user.addRole(userRole);
         admin.addRole(adminRole);
         both.addRole(userRole);
@@ -98,6 +102,8 @@ public class DemoResource {
         //persisting
         em.persist(userRole);
         em.persist(adminRole);
+        em.persist(test1);//t
+        em.persist(test2);//t
         em.persist(user);
         em.persist(admin);
         em.persist(both);
