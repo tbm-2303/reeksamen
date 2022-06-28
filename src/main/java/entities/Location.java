@@ -46,4 +46,12 @@ public class Location implements Serializable {
     public void setCity(String city) { this.city = city; }
     public String getCondition() { return condition; }
     public void setCondition(String condition) { this.condition = condition; }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
+    }
 }

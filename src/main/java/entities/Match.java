@@ -57,4 +57,20 @@ public class Match  implements Serializable {
     public void setType(String type) { this.type = type; }
     public String getInDoor() { return inDoor; }
     public void setInDoor(String inDoor) { this.inDoor = inDoor; }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }

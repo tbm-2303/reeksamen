@@ -7,9 +7,6 @@
         <!--    <class>entities.RenameMe</class>-->
         <class>entities.User</class>
         <class>entities.Role</class>
-        <class>entities.Race</class>
-        <class>entities.Driver</class>
-        <class>entities.Car</class>
         <class>entities.Match</class>
         <class>entities.Player</class>
         <class>entities.Location</class>
