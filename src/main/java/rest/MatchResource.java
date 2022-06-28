@@ -7,6 +7,7 @@ import dtos.PlayerDTO;
 import dtos.UserDTO;
 import entities.Match;
 import entities.User;
+import errorhandling.EntityNotFoundException;
 import facades.MatchFacade;
 import facades.UserFacade;
 import utils.EMF_Creator;
@@ -90,9 +91,21 @@ public class MatchResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/create/{locationid}")
-    public Response createMatch(String match, @PathParam("locationid") Integer locationid) throws NotFoundException {
+    public Response createMatch(String match, @PathParam("locationid") Integer locationid) throws EntityNotFoundException {
         MatchDTO matchDTO= GSON.fromJson(match, MatchDTO.class);
-        MatchDTO created = FACADE.create(matchDTO, locationid);
+        MatchDTO created = FACADE.createMatch(matchDTO, locationid);
+        return Response
+                .ok()
+                .entity(GSON.toJson(created))
+                .build();
+    }
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/createPlayer/{username}")
+    public Response createPlayer(String player, @PathParam("username") String username) throws EntityNotFoundException {
+        PlayerDTO playerDTO = GSON.fromJson(player, PlayerDTO.class);
+        PlayerDTO created = FACADE.createPlayer(playerDTO, username);
         return Response
                 .ok()
                 .entity(GSON.toJson(created))

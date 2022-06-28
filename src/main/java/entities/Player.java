@@ -50,6 +50,10 @@ public class Player implements Serializable {
     }
 
 
+    public void addUser(User user){
+        setUser(user);
+        user.setPlayer(this);
+    }
     //add relation
     public void addMatch(Match match) {
         this.matches.add(match);
