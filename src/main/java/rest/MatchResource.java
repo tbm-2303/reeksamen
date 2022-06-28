@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.LocationDTO;
 import dtos.MatchDTO;
 import dtos.PlayerDTO;
 import dtos.UserDTO;
@@ -110,6 +111,20 @@ public class MatchResource {
     public Response createPlayer(String player, @PathParam("username") String username) throws EntityNotFoundException {
         PlayerDTO playerDTO = GSON.fromJson(player, PlayerDTO.class);
         PlayerDTO created = FACADE.createPlayer(playerDTO, username);
+        return Response
+                .ok()
+                .entity(GSON.toJson(created))
+                .build();
+    }
+
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/createLocation/")
+    public Response createPlayer(String location) throws EntityNotFoundException {
+        LocationDTO locationDTO = GSON.fromJson(location, LocationDTO.class);
+        LocationDTO created = FACADE.createLocation(locationDTO);
         return Response
                 .ok()
                 .entity(GSON.toJson(created))
