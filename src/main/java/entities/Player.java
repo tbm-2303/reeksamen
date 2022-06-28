@@ -63,6 +63,8 @@ public class Player implements Serializable {
         match.getPlayers().remove(this);
     }
 
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public List<Match> getMatches() { return matches; }
     public void setMatches(List<Match> matches) { this.matches = matches; }
     public User getUser() { return user; }

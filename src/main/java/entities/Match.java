@@ -65,10 +65,7 @@ public class Match  implements Serializable {
     public void setLocation(Location location) { this.location = location; }
     public List<Player> getPlayers() { return players; }
     public void setPlayers(List<Player> players) { this.players = players; }
-
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
 
 }

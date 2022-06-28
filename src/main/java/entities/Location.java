@@ -53,6 +53,7 @@ public class Location implements Serializable {
         match.setLocation(null);
     }
 
+    public int getId() { return id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public List<Match> getMatches() { return matches; }
