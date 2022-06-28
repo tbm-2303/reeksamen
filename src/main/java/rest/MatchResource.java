@@ -38,6 +38,21 @@ public class MatchResource {
     }
 
 
+
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("getMyMatches/{username}")
+    //@RolesAllowed("user")
+    public Response getMyMatches(@PathParam("username") String username) {
+        List<MatchDTO> matches = FACADE.getMyMatches(username);
+        return Response
+                .ok()
+                .entity(GSON.toJson(matches))
+                .build();
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("getAll")
