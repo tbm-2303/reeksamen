@@ -32,7 +32,9 @@ public class Match  implements Serializable {
     @ManyToMany(mappedBy="matches")
     private List<Player> players = new ArrayList<>();
 
-
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
 
     public Match(String opponent, String judge, String type, String inDoor) {
@@ -54,7 +56,13 @@ public class Match  implements Serializable {
     public String getInDoor() { return inDoor; }
     public void setInDoor(String inDoor) { this.inDoor = inDoor; }
 
+    public Location getLocation() {
+        return location;
+    }
 
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public List<Player> getPlayers() {
         return players;

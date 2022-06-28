@@ -2,10 +2,12 @@ package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "locations")
-@NamedQuery(name="Location.deleteAll", query = "DELETE FROM Location")
+@NamedQuery(name = "Location.deleteAll", query = "DELETE FROM Location")
 public class Location implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,6 +24,9 @@ public class Location implements Serializable {
     @Column(name = "con", nullable = false)
     private String con;
 
+    @OneToMany(mappedBy = "match", cascade = CascadeType.PERSIST)
+    private List<Match> matches = new ArrayList<>();
+
 
     public Location(String address, String city, String con) {
         this.address = address;
@@ -32,6 +37,13 @@ public class Location implements Serializable {
     public Location() {
     }
 
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
+    }
 
     public String getCity() {
         return city;
