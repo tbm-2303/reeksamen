@@ -1,11 +1,9 @@
 package facades;
 
 import com.google.gson.JsonObject;
+import dtos.MatchDTO;
 import dtos.UserDTO;
-import entities.Match;
-import entities.Player;
-import entities.Role;
-import entities.User;
+import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -46,17 +44,22 @@ public class MatchFacade {
     }
 
 
-    public Match create(Match match) {
+    public MatchDTO create(MatchDTO matchDTO, int locationid) {
         EntityManager em = getEntityManager();
+        Location location = em.find(Location.class, locationid);
+        Match match = new Match(matchDTO.getOpponent(),matchDTO.getJudge(),matchDTO.getType(),matchDTO.getInDoor());
+        location.addMatch(match);
         try {
             em.getTransaction().begin();
+            em.merge(location);
             em.persist(match);
             em.getTransaction().commit();
         } finally {
             em.close();
         }
-        return match;
+        return matchDTO;
     }
+
 
     public List<Match> getAll() {
         EntityManager em = getEntityManager();
