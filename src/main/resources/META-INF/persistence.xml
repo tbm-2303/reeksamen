@@ -10,6 +10,9 @@
         <class>entities.Race</class>
         <class>entities.Driver</class>
         <class>entities.Car</class>
+        <class>entities.Match</class>
+        <class>entities.Player</class>
+        <class>entities.Location</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <!-- DO NOT remove the line below. It's not set by the  entityUtils.EMF_Creator -->
