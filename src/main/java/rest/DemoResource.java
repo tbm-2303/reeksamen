@@ -105,7 +105,7 @@ public class DemoResource {
 
         Player player = new Player("name","phone","email","status");
         player.addUser(user);
-        player.addMatch(match);
+        
 
         em.persist(location);
         em.persist(location2);

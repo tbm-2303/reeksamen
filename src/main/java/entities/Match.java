@@ -50,7 +50,7 @@ public class Match  implements Serializable {
 
 //add
     public void addPlayer(Player player) {
-        this.players.add(player);
+        players.add(player);
     }
 
     public String getOpponent() { return opponent; }

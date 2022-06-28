@@ -56,7 +56,7 @@ public class Player implements Serializable {
     }
     //add relation
     public void addMatch(Match match) {
-        matches.add(match);
+        this.matches.add(match);
         match.addPlayer(this);
 
     }
