@@ -72,54 +72,42 @@ public class DemoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("setup")
     public String setup(){
-
         EntityManager em = EMF.createEntityManager();
-
-        // IMPORTAAAAAAAAAANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // This breaks one of the MOST fundamental security rules in that it ships with default users and passwords
-        // CHANGE the three passwords below, before you uncomment and execute the code below
-        // Also, either delete this file, when users are created or rename and add to .gitignore
-        // Whatever you do DO NOT COMMIT and PUSH with the real passwords
-
+        em.getTransaction().begin();
         User user = new User("timmy", "timmy123");
         User admin = new User("james", "james123");
         User both = new User("kent", "kent123");
-
-        if(admin.getUserPass().equals("test")||user.getUserPass().equals("test")||both.getUserPass().equals("test"))
-            throw new UnsupportedOperationException("You have not changed the passwords");
-
-        em.getTransaction().begin();
         Role userRole = new Role("user");
         Role adminRole = new Role("admin");
-        user.addRole(userRole);
-        admin.addRole(adminRole);
-        both.addRole(userRole);
-        both.addRole(adminRole);
         Location location = new Location("Per Henrik Lings Allé 2","2100 København","good", "Parken");
         Location location2 = new Location("aliancetrase 2","Berlin", "good","Aliance stadion");
         Match match = new Match("oppnent","judge","type","indoor");
         Match match2 = new Match("oppnent2","judge2","type2","indoor2");
+        Player player = new Player("name","phone","email","status");
+
+        //relation
+        user.addRole(userRole);
+        admin.addRole(adminRole);
+        both.addRole(userRole);
+        both.addRole(adminRole);
         location.addMatch(match);
         location2.addMatch(match2);
-
-
-        Player player = new Player("name","phone","email","status");
         player.addUser(user);
-        
 
+        //persisting
+        em.persist(userRole);
+        em.persist(adminRole);
+        em.persist(user);
+        em.persist(admin);
+        em.persist(both);
         em.persist(location);
         em.persist(location2);
         em.persist(match);
         em.persist(match2);
         em.persist(player);
 
-
-        em.persist(userRole);
-        em.persist(adminRole);
-        em.persist(user);
-        em.persist(admin);
-        em.persist(both);
         em.getTransaction().commit();
+
         System.out.println("PW: " + user.getUserPass());
         System.out.println("Testing user with OK password: " + user.verifyPassword("timmy123"));
         System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
