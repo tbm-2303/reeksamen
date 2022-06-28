@@ -5,10 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import dtos.UserDTO;
-import entities.Location;
-import entities.Match;
-import entities.Role;
-import entities.User;
+import entities.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -100,15 +97,22 @@ public class DemoResource {
         both.addRole(adminRole);
         Location location = new Location("Per Henrik Lings Allé 2","2100 København","good", "Parken");
         Location location2 = new Location("aliancetrase 2","Berlin", "good","Aliance stadion");
-
         Match match = new Match("oppnent","judge","type","indoor");
         Match match2 = new Match("oppnent2","judge2","type2","indoor2");
         location.addMatch(match);
         location2.addMatch(match2);
+
+
+        Player player = new Player("name","phone","email","status");
+        player.addUser(user);
+
         em.persist(location);
         em.persist(location2);
         em.persist(match);
         em.persist(match2);
+        em.persist(player);
+
+
         em.persist(userRole);
         em.persist(adminRole);
         em.persist(user);
