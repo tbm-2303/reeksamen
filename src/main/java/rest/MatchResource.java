@@ -40,10 +40,26 @@ public class MatchResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("getall")
+    @Path("getAll")
     //@RolesAllowed("user")
     public Response getAllMatches() {
         List<Match> matches = FACADE.getAll();
+        List<MatchDTO> matchDTOS = new ArrayList<>();
+        for (Match match : matches) {
+            matchDTOS.add(new MatchDTO(match));
+        }
+        return Response
+                .ok()
+                .entity(GSON.toJson(matchDTOS))
+                .build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("getByLocation/{locationid}")
+    //@RolesAllowed("user")
+    public Response getByLocation(@PathParam("locationid") Integer locationid) {
+        List<Match> matches = FACADE.getMatchesByLocation(locationid);
         List<MatchDTO> matchDTOS = new ArrayList<>();
         for (Match match : matches) {
             matchDTOS.add(new MatchDTO(match));
