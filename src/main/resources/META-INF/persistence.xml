@@ -9,6 +9,7 @@
         <class>entities.Role</class>
         <class>entities.Match</class>
         <class>entities.Player</class>
+        <class>entities.test</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <!-- DO NOT remove the line below. It's not set by the  entityUtils.EMF_Creator -->
