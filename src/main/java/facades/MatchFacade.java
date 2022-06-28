@@ -62,7 +62,7 @@ public class MatchFacade {
 
     public List<Match> getMatchesByLocation(int locationid) {
         EntityManager em = getEntityManager();
-        TypedQuery<Match> query = em.createQuery("SELECT m FROM Match m where m.location = '" + locationid+"'", Match.class);
+        TypedQuery<Match> query = em.createQuery("SELECT m FROM Match m where m.location = '" + locationid +"'", Match.class);
         return query.getResultList();
     }
 
