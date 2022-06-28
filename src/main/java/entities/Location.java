@@ -29,6 +29,8 @@ public class Location implements Serializable {
     @OneToMany(mappedBy = "location", cascade = CascadeType.PERSIST)
     private List<Match> matches = new ArrayList<>();
 
+
+
     public Location(String address, String city, String condition) {
         this.address = address;
         this.city = city;

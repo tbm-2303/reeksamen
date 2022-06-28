@@ -35,7 +35,7 @@ public class User implements Serializable {
     private String firstName;
 
     @OneToOne(mappedBy = "user")
-    private Driver driver;
+    private Player player;
 
     @JoinTable(name = "user_roles", joinColumns = {
             @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
@@ -81,8 +81,6 @@ public class User implements Serializable {
     public void setId(int id) { this.id = id; }
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
-    public Driver getDriver() { return driver; }
-    public void setDriver(Driver driver) { this.driver = driver; }
     public String getUserName() {
         return userName;
     }
@@ -101,7 +99,8 @@ public class User implements Serializable {
     public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
     }
-
+    public Player getPlayer() {return player; }
+    public void setPlayer(Player player) { this.player = player; }
     public void addRole(Role userRole) {
         roleList.add(userRole);
     }

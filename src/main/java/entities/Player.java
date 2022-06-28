@@ -35,6 +35,9 @@ public class Player implements Serializable {
     @ManyToMany
     private List<Match> matches = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     public Player(String name, String phone, String email, String status) {
         this.name = name;
