@@ -56,6 +56,7 @@ public class MatchResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Path("getByLocation/{locationid}")
     //@RolesAllowed("user")
     public Response getByLocation(@PathParam("locationid") Integer locationid) {
