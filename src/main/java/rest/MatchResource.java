@@ -131,4 +131,16 @@ public class MatchResource {
                 .build();
     }
 
+    @PUT
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+
+    public Response update(@PathParam("id") int id, String content) throws EntityNotFoundException {
+        MatchDTO dto = GSON.fromJson(content, MatchDTO.class);
+        dto.setId(id);
+        MatchDTO updated = FACADE.update(dto);
+        return Response.ok().entity(GSON.toJson(updated)).build();
+    }
+
 }

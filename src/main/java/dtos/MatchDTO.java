@@ -30,6 +30,8 @@ public class MatchDTO {
         if (match.getPlayers() != null) {
             this.playerList = match.getPlayers();
         }
+
+
     }
 
 
@@ -41,6 +43,7 @@ public class MatchDTO {
         }
         return matchDTOS;
     }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getOpponent() { return opponent; }

@@ -131,17 +131,18 @@ public class MatchFacade {
         return match;
     }
 
-    public Match update(Match match) throws EntityNotFoundException {
+    public MatchDTO update(MatchDTO match) throws EntityNotFoundException {
         EntityManager em = getEntityManager();
         Match m = em.find(Match.class, match.getId());
         if (m == null) {
             throw new EntityNotFoundException("Match with ID: " + match.getId() + " was not found");
         }
-        m.setLocation(match.getLocation());
         m.setOpponent(match.getOpponent());
         m.setJudge(match.getJudge());
         m.setType(match.getType());
         m.setInDoor(match.getInDoor());
+        //m.setLocation(match.getLocation());
+
 
         em.getTransaction().begin();
         Match updated = em.merge(m);
