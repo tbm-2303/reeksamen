@@ -49,10 +49,18 @@ public class Player implements Serializable {
     public Player() {
     }
 
+
+    //add relation
+    public void addMatch(Match match) {
+        this.matches.add(match);
+        if(!match.getPlayers().contains(this)){
+           match.addPlayer(this);
+        }
+    }
+
     public String getName() {
         return name;
     }
-
     public void setName(String name) { this.name = name; }
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }

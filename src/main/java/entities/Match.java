@@ -48,6 +48,11 @@ public class Match  implements Serializable {
     public Match() {
     }
 
+//add
+    public void addPlayer(Player player) {
+        this.players.add(player);
+    }
+
     public String getOpponent() { return opponent; }
     public void setOpponent(String opponent) { this.opponent = opponent; }
     public String getJudge() { return judge; }
@@ -56,22 +61,10 @@ public class Match  implements Serializable {
     public void setType(String type) { this.type = type; }
     public String getInDoor() { return inDoor; }
     public void setInDoor(String inDoor) { this.inDoor = inDoor; }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
+    public Location getLocation() { return location; }
+    public void setLocation(Location location) { this.location = location; }
+    public List<Player> getPlayers() { return players; }
+    public void setPlayers(List<Player> players) { this.players = players; }
 
 
 }

@@ -23,50 +23,44 @@ public class Location implements Serializable {
     private String city;
     @Column(name = "con", nullable = false)
     private String con;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.PERSIST)
     private List<Match> matches = new ArrayList<>();
 
 
 
-    public Location(String address, String city, String con) {
+    public Location(String address, String city, String con, String name) {
         this.address = address;
         this.city = city;
         this.con = con;
+        this.name = name;
     }
 
     public Location() {
     }
 
-    public List<Match> getMatches() {
-        return matches;
+
+
+    //add
+    public void addMatch(Match match) {
+        this.matches.add(match);
+        match.setLocation(this);
+    }
+    public void removeMatch(Match match) {
+        this.matches.remove(match);
+        match.setLocation(null);
     }
 
-    public void setMatches(List<Match> matches) {
-        this.matches = matches;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCon() {
-        return con;
-    }
-
-    public void setCon(String con) {
-        this.con = con;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public List<Match> getMatches() { return matches; }
+    public void setMatches(List<Match> matches) { this.matches = matches; }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
+    public String getCon() { return con; }
+    public void setCon(String con) { this.con = con; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 }
