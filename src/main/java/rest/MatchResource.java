@@ -2,8 +2,11 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.MatchDTO;
 import dtos.UserDTO;
+import entities.Match;
 import entities.User;
+import facades.MatchFacade;
 import facades.UserFacade;
 import utils.EMF_Creator;
 
@@ -24,7 +27,7 @@ public class MatchResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final UserFacade FACADE = UserFacade.getUserFacade(EMF_Creator.createEntityManagerFactory());
+    private static final MatchFacade FACADE = MatchFacade.getMatchFacade(EMF_Creator.createEntityManagerFactory());
 
     @Context
     private UriInfo context;
@@ -44,9 +47,9 @@ public class MatchResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("allMatches")
     //@RolesAllowed("user")
-    public String getAllUsers() {
-        List<UserDTO> userDTOList = FACADE.getAllUsers();
-        return GSON.toJson(userDTOList);
+    public String getAllMatches() {
+        List<Match> matches = FACADE.getAll();
+        return GSON.toJson(matches);
     }
 
 }
