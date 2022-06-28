@@ -20,6 +20,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("match")
@@ -49,7 +50,11 @@ public class MatchResource {
     //@RolesAllowed("user")
     public String getAllMatches() {
         List<Match> matches = FACADE.getAll();
-        return GSON.toJson(matches);
+        List<MatchDTO> matchDTOS = new ArrayList<>();
+        for (Match m : matches) {
+            matchDTOS.add(new MatchDTO(m));
+        }
+        return GSON.toJson(matchDTOS);
     }
 
 }
