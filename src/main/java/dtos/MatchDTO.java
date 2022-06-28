@@ -13,7 +13,7 @@ public class MatchDTO {
     private String judge;
     private String type;
     private String inDoor;
-    private Location location;
+    private LocationDTO locationDTO;
     private List<Player> playerList;
 
     public MatchDTO() {
@@ -27,6 +27,7 @@ public class MatchDTO {
         this.judge = match.getJudge();
         this.type = match.getType();
         this.inDoor = match.getInDoor();
+        this.locationDTO = new LocationDTO(match.getLocation());
         if (match.getPlayers() != null) {
             this.playerList = match.getPlayers();
         }
@@ -51,8 +52,8 @@ public class MatchDTO {
     public void setType(String type) { this.type = type; }
     public String getInDoor() { return inDoor; }
     public void setInDoor(String inDoor) { this.inDoor = inDoor; }
-    public Location getLocation() { return location; }
-    public void setLocation(Location location) { this.location = location; }
+    public LocationDTO getLocationDTO() { return locationDTO; }
+    public void setLocation(LocationDTO locationDTO) { this.locationDTO = locationDTO; }
     public List<Player> getPlayerList() { return playerList; }
     public void setPlayerList(List<Player> playerList) { this.playerList = playerList; }
 }
