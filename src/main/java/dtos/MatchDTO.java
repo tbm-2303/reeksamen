@@ -27,7 +27,6 @@ public class MatchDTO {
         this.judge = match.getJudge();
         this.type = match.getType();
         this.inDoor = match.getInDoor();
-
         if (match.getPlayers() != null) {
             this.playerList = match.getPlayers();
         }
