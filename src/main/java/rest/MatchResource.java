@@ -143,7 +143,7 @@ public class MatchResource {
     public Response delete(@PathParam("id") int id) throws EntityNotFoundException {
         PlayerDTO deleted = new PlayerDTO(FACADE.deletePlayer(id));
         return Response
-                .ok("")
+                .ok("SUCCESS")
                 .entity(GSON.toJson(deleted))
                 .build();
     }
