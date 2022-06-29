@@ -68,6 +68,22 @@ public class MatchResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("getAllPlayers")
+    //@RolesAllowed("user")
+    public Response getAllPlayers() {
+        List<Player> matches = FACADE.getAllPlayers();
+        List<PlayerDTO> playerDTOS= new ArrayList<>();
+        for (Player p : matches) {
+            playerDTOS.add(new PlayerDTO(p));
+        }
+        return Response
+                .ok()
+                .entity(GSON.toJson(playerDTOS))
+                .build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("getByLocation/{locationid}")
     //@RolesAllowed("user")

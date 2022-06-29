@@ -123,6 +123,13 @@ public class MatchFacade {
         return query.getResultList();
     }
 
+    public List<Player> getAllPlayers() {
+        EntityManager em = getEntityManager();
+        TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p", Player.class);
+        return query.getResultList();
+    }
+
+
     public Match getById(int id) throws EntityNotFoundException {
         EntityManager em = getEntityManager();
         Match match = em.find(Match.class, id);
