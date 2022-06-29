@@ -30,8 +30,6 @@ public class MatchDTO {
         if (match.getPlayers() != null) {
             this.playerList = match.getPlayers();
         }
-
-
     }
 
 
