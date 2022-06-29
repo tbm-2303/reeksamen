@@ -48,13 +48,9 @@ public class Match  implements Serializable {
     public Match() {
     }
 
-//add
-    public void addPlayer(Player player) {
-        players.add(player);
-        player.addMatch(this);
+    public void removePlayer(Player player){
+        this.players.remove(player);
     }
-
-
 
     public String getOpponent() { return opponent; }
     public void setOpponent(String opponent) { this.opponent = opponent; }
