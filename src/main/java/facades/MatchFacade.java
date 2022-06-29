@@ -150,16 +150,20 @@ public class MatchFacade {
         return match;
     }
 
-    public String  deletePlayer(int id) throws EntityNotFoundException {
+    public Player deletePlayer(int id) throws EntityNotFoundException {
         EntityManager em = getEntityManager();
         Player player = em.find(Player.class, id);
         if (player == null)
             throw new EntityNotFoundException("Could not remove player with id: " + id);
 
-        em.getTransaction().begin();
-        em.remove(player);
-        em.getTransaction().commit();
-        return "deleted player complete";
+        try {
+            em.getTransaction().begin();
+            em.remove(player);
+            em.getTransaction().commit();
+            return player;
+        } finally {
+            em.close();
+        }
     }
 
 

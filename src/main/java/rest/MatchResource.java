@@ -6,6 +6,7 @@ import dtos.LocationDTO;
 import dtos.MatchDTO;
 import dtos.PlayerDTO;
 import entities.Match;
+import entities.Player;
 import errorhandling.EntityNotFoundException;
 import facades.MatchFacade;
 import utils.EMF_Creator;
@@ -136,11 +137,16 @@ public class MatchResource {
         return Response.ok().entity(GSON.toJson(updated)).build();
     }
 
-
     @DELETE
     @Path("delete/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public String deletePlayer(@PathParam("id") int id) throws EntityNotFoundException {
-        return FACADE.deletePlayer(id);
+    public Response delete(@PathParam("id") int id) throws EntityNotFoundException {
+        PlayerDTO deleted = new PlayerDTO(FACADE.deletePlayer(id));
+        return Response
+                .ok("SUCCESS")
+                .entity(GSON.toJson(deleted))
+                .build();
     }
+
+
 }
