@@ -154,7 +154,7 @@ public class MatchFacade {
         EntityManager em = getEntityManager();
         Player player = em.find(Player.class, id);
         if (player == null)
-            throw new EntityNotFoundException("Could not remove match with id: " + id);
+            throw new EntityNotFoundException("Could not remove player with id: " + id);
 
         if (player.getMatches() != null)
             for (Match match : player.getMatches()) {
