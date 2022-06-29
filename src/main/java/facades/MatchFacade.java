@@ -150,7 +150,7 @@ public class MatchFacade {
         return match;
     }
 
-    public Player deletePlayer(int id) throws EntityNotFoundException {
+    public void deletePlayer(int id) throws EntityNotFoundException {
         EntityManager em = getEntityManager();
         Player player = em.find(Player.class, id);
         if (player == null)
@@ -164,7 +164,6 @@ public class MatchFacade {
         em.getTransaction().begin();
         em.remove(player);
         em.getTransaction().commit();
-        return player;
     }
 
 

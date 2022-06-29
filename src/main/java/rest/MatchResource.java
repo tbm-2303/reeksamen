@@ -41,9 +41,6 @@ public class MatchResource {
     }
 
 
-
-
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("getMyMatches/{username}")
@@ -91,20 +88,23 @@ public class MatchResource {
                 .ok()
                 .entity(GSON.toJson(matchDTOS))
                 .build();
-    };
+    }
+
+    ;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/create/{locationid}")
     public Response createMatch(String match, @PathParam("locationid") Integer locationid) throws EntityNotFoundException {
-        MatchDTO matchDTO= GSON.fromJson(match, MatchDTO.class);
+        MatchDTO matchDTO = GSON.fromJson(match, MatchDTO.class);
         MatchDTO created = FACADE.createMatch(matchDTO, locationid);
         return Response
                 .ok()
                 .entity(GSON.toJson(created))
                 .build();
     }
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -146,10 +146,10 @@ public class MatchResource {
 
 
     @DELETE
-    @Path("/{id}")
+    @Path("delete/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response deletePlayer(@PathParam("id") int id) throws EntityNotFoundException {
-        Player deleted = FACADE.deletePlayer(id);
-        return Response.ok().entity(GSON.toJson(deleted)).build();
+    public String deletePlayer(@PathParam("id") int id) throws EntityNotFoundException {
+        FACADE.deletePlayer(id);
+        return "{\"msg\":\"delete check\"}";
     }
 }
