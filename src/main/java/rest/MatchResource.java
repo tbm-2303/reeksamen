@@ -149,7 +149,7 @@ public class MatchResource {
     @Path("delete/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public String deletePlayer(@PathParam("id") int id) throws EntityNotFoundException {
-        FACADE.deletePlayer(id);
+        //FACADE.deletePlayer(id);
         return "{\"msg\":\"delete check\"}";
     }
 }
