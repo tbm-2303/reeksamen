@@ -5,22 +5,14 @@ import com.google.gson.GsonBuilder;
 import dtos.LocationDTO;
 import dtos.MatchDTO;
 import dtos.PlayerDTO;
-import dtos.UserDTO;
 import entities.Match;
-import entities.Player;
-import entities.User;
 import errorhandling.EntityNotFoundException;
 import facades.MatchFacade;
-import facades.UserFacade;
 import utils.EMF_Creator;
-
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Path("match")
@@ -149,7 +141,6 @@ public class MatchResource {
     @Path("delete/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public String deletePlayer(@PathParam("id") int id) throws EntityNotFoundException {
-        //FACADE.deletePlayer(id);
-        return "{\"msg\":\"delete check\"}";
+        return FACADE.deletePlayer(id);
     }
 }
