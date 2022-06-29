@@ -54,6 +54,10 @@ public class Player implements Serializable {
         setUser(user);
         user.setPlayer(this);
     }
+    public void removeUser(User user){
+        setUser(null);
+        user.removePlayer();
+    }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

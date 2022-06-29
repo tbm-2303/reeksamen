@@ -72,6 +72,12 @@ public class User implements Serializable {
         return rolesAsStrings;
     }
 
+
+    public void removePlayer(){
+       setPlayer(null);
+    }
+
+
     public String getRole(){
         Role role = this.roleList.get(0);
         String value = role.getRoleName();
